@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VendasWebMvc.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace VendasWebMvc.Models.Services
 {
@@ -17,9 +18,9 @@ namespace VendasWebMvc.Models.Services
         }
 
 
-        public List<Department> FindAll()
+        public async Task<List<Department>> FindAllAsync()
         {
-            return _context.Department.OrderBy(x => x.Name).ToList();
+            return await _context.Department.OrderBy(x => x.Name).ToListAsync();
         }
 
     }
